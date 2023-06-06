@@ -1,18 +1,15 @@
 import _ from 'lodash';
 import getWeather from './print.js';
+import './style.css';
 
- function component() {
-   const element = document.createElement('div');
-  const btn = document.createElement('button');
+function component() {
+    const controls = document.querySelector(".controls");
+    const btn = document.querySelector(".search-button")
 
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    btn.addEventListener("click", getWeather, false);
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.addEventListener("click", e=> getWeather("Boston"));
+    controls.appendChild(btn);
+};
 
-  element.appendChild(btn);
+component();
 
-   return element;
- }
-
- document.body.appendChild(component());
