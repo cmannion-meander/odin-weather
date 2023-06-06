@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ printMe)\n/* harmony export */ });\nfunction printMe() {\n    console.log('I get called from print.js!');\n  }\n\n//# sourceURL=webpack://odin-weather/./src/print.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ getWeather)\n/* harmony export */ });\nfunction getWeather(location) {\n    console.log(`Trying to get weather from ${location}`);\n    console.log(loadWeather(location));\n  };\n   \nasync function loadWeather(location) {\n    let input = location.toLowerCase();\n    \n    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=8a84e8aab8c24f2388f134054230506&q=${input}&days=3`, {mode: 'cors'});\n    const data = await response.json();\n    extractWeather(data);\n};\n\nasync function extractWeather(jsonData) {\n    const current = jsonData.current;\n    const today = jsonData.forecast.forecastday[0].day;\n    const tomorrow = jsonData.forecast.forecastday[1].day;\n    const twoday = jsonData.forecast.forecastday[2].day;\n\n    displayWeather(current, today, tomorrow, twoday);\n};\n\nfunction displayWeather(current, today, tomorrow, twoday) {\n    console.log(current);\n    console.log(today);\n    console.log(tomorrow);\n    console.log(twoday);\n};\n\n//# sourceURL=webpack://odin-weather/./src/print.js?");
 
 /***/ })
 
